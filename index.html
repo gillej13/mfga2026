@@ -533,16 +533,17 @@ function pill(color, text) {
 
 // ── Backend ────────────────────────────────────────────────────────
 async function fetchData() {
-  const r = await fetch(GAS_URL + "?action=read");
+  const r = await fetch(GAS_URL + "?action=read", { cache: "no-store" });
+  if (!r.ok) throw new Error("HTTP " + r.status);
   return JSON.parse(await r.text());
 }
 
 async function pushData(data) {
-  await fetch(GAS_URL, {
-    method:"POST", mode:"no-cors",
-    headers:{"Content-Type":"text/plain"},
-    body:JSON.stringify(data)
-  });
+  // GET + base64 payload — works on iOS Safari (no-cors POST silently fails on iOS)
+  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  const r = await fetch(GAS_URL + "?action=write&data=" + encoded, { cache: "no-store" });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return JSON.parse(await r.text());
 }
 
 // ── State ─────────────────────────────────────────────────────────
