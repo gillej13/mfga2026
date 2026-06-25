@@ -304,7 +304,7 @@
     <div class="splash-club">MFGA</div>
     <div class="splash-divider"></div>
     <div class="splash-title">Prediction League</div>
-    <div class="splash-subtitle">Group Stage · Jun 11 – Jun 27</div>
+    <div class="splash-subtitle">Group Stage &amp; Knockout · Jun 11 – Jul 19</div>
     <div class="splash-wc">FIFA WORLD CUP 2026</div>
     <div class="splash-players">
       <span class="splash-player">Jez</span>
@@ -329,7 +329,7 @@
       <div>
         <div class="header-title">MFGA PREDICTION LEAGUE 2026</div>
         <div class="header-sub">FIFA WORLD CUP</div>
-        <div class="header-date">Group Stage · Jun 11 – Jun 27</div>
+        <div class="header-date">Group Stage &amp; Knockout · Jun 11 – Jul 19</div>
       </div>
     </div>
   </div>
@@ -471,15 +471,70 @@ const MD3_FIXTURES = [
   {id:224, home:"Jordan",            away:"Argentina",           group:"J", date:"Sun 28 Jun", ko:"2026-06-28T02:00:00Z", venue:"Dallas"},
 ];
 
-const ALL_FIXTURES = { 1: MD1_FIXTURES, 2: MD2_FIXTURES, 3: MD3_FIXTURES };
+// KO Fixtures 301–332. home/away left blank until admin enters team names.
+// Locking: per-match kick-off time. Also greyed out until admin sets team names.
+// ko times are UTC; BST = UTC+1.
+const KO_FIXTURES = [
+  // ── ROUND OF 32 ──────────────────────────────────────────────────
+  {id:301, home:"", away:"", round:"L32", date:"Sun 28 Jun", ko:"2026-06-28T19:00:00Z", venue:"Los Angeles, USA"},
+  {id:302, home:"", away:"", round:"L32", date:"Mon 29 Jun", ko:"2026-06-29T17:00:00Z", venue:"Houston, USA"},
+  {id:303, home:"", away:"", round:"L32", date:"Mon 29 Jun", ko:"2026-06-29T20:30:00Z", venue:"Foxborough, USA"},
+  {id:304, home:"", away:"", round:"L32", date:"Tue 30 Jun", ko:"2026-06-30T01:00:00Z", venue:"Guadalajara, Mexico"},
+  {id:305, home:"", away:"", round:"L32", date:"Tue 30 Jun", ko:"2026-06-30T17:00:00Z", venue:"Arlington, USA"},
+  {id:306, home:"", away:"", round:"L32", date:"Tue 30 Jun", ko:"2026-06-30T21:00:00Z", venue:"New Jersey, USA"},
+  {id:307, home:"", away:"", round:"L32", date:"Wed 1 Jul",  ko:"2026-07-01T01:00:00Z", venue:"Mexico City, Mexico"},
+  {id:308, home:"", away:"", round:"L32", date:"Wed 1 Jul",  ko:"2026-07-01T16:00:00Z", venue:"Atlanta, USA"},
+  {id:309, home:"", away:"", round:"L32", date:"Wed 1 Jul",  ko:"2026-07-01T20:00:00Z", venue:"Seattle, USA"},
+  {id:310, home:"", away:"", round:"L32", date:"Thu 2 Jul",  ko:"2026-07-02T00:00:00Z", venue:"Santa Clara, USA"},
+  {id:311, home:"", away:"", round:"L32", date:"Thu 2 Jul",  ko:"2026-07-02T19:00:00Z", venue:"Los Angeles, USA"},
+  {id:312, home:"", away:"", round:"L32", date:"Fri 3 Jul",  ko:"2026-07-02T23:00:00Z", venue:"Toronto, Canada"},
+  {id:313, home:"", away:"", round:"L32", date:"Fri 3 Jul",  ko:"2026-07-03T03:00:00Z", venue:"Vancouver, Canada"},
+  {id:314, home:"", away:"", round:"L32", date:"Fri 3 Jul",  ko:"2026-07-03T18:00:00Z", venue:"Arlington, USA"},
+  {id:315, home:"", away:"", round:"L32", date:"Fri 3 Jul",  ko:"2026-07-03T22:00:00Z", venue:"Miami, USA"},
+  {id:316, home:"", away:"", round:"L32", date:"Sat 4 Jul",  ko:"2026-07-04T01:30:00Z", venue:"Kansas City, USA"},
+  // ── ROUND OF 16 ──────────────────────────────────────────────────
+  {id:317, home:"", away:"", round:"L16", date:"Sat 4 Jul",  ko:"2026-07-04T17:00:00Z", venue:"Houston, USA"},
+  {id:318, home:"", away:"", round:"L16", date:"Sat 4 Jul",  ko:"2026-07-04T21:00:00Z", venue:"Philadelphia, USA"},
+  {id:319, home:"", away:"", round:"L16", date:"Sun 5 Jul",  ko:"2026-07-05T20:00:00Z", venue:"New Jersey, USA"},
+  {id:320, home:"", away:"", round:"L16", date:"Mon 6 Jul",  ko:"2026-07-06T00:00:00Z", venue:"Mexico City, Mexico"},
+  {id:321, home:"", away:"", round:"L16", date:"Mon 6 Jul",  ko:"2026-07-06T19:00:00Z", venue:"Arlington, USA"},
+  {id:322, home:"", away:"", round:"L16", date:"Tue 7 Jul",  ko:"2026-07-07T00:00:00Z", venue:"Seattle, USA"},
+  {id:323, home:"", away:"", round:"L16", date:"Tue 7 Jul",  ko:"2026-07-07T16:00:00Z", venue:"Atlanta, USA"},
+  {id:324, home:"", away:"", round:"L16", date:"Tue 7 Jul",  ko:"2026-07-07T20:00:00Z", venue:"Vancouver, Canada"},
+  // ── QUARTER-FINALS ───────────────────────────────────────────────
+  {id:325, home:"", away:"", round:"QF",  date:"Thu 9 Jul",  ko:"2026-07-09T20:00:00Z", venue:"Foxborough, USA"},
+  {id:326, home:"", away:"", round:"QF",  date:"Fri 10 Jul", ko:"2026-07-10T19:00:00Z", venue:"Los Angeles, USA"},
+  {id:327, home:"", away:"", round:"QF",  date:"Sat 11 Jul", ko:"2026-07-11T21:00:00Z", venue:"Miami, USA"},
+  {id:328, home:"", away:"", round:"QF",  date:"Sun 12 Jul", ko:"2026-07-12T01:00:00Z", venue:"Kansas City, USA"},
+  // ── SEMI-FINALS ──────────────────────────────────────────────────
+  {id:329, home:"", away:"", round:"SF",  date:"Tue 14 Jul", ko:"2026-07-14T19:00:00Z", venue:"Arlington, USA"},
+  {id:330, home:"", away:"", round:"SF",  date:"Wed 15 Jul", ko:"2026-07-15T19:00:00Z", venue:"Atlanta, USA"},
+  // ── 3RD PLACE PLAYOFF ────────────────────────────────────────────
+  {id:331, home:"", away:"", round:"3rd", date:"Sat 18 Jul", ko:"2026-07-18T21:00:00Z", venue:"Miami, USA"},
+  // ── FINAL ────────────────────────────────────────────────────────
+  {id:332, home:"", away:"", round:"F",   date:"Sun 19 Jul", ko:"2026-07-19T19:00:00Z", venue:"New Jersey, USA"},
+];
+
+const ALL_FIXTURES = {
+  1:    MD1_FIXTURES,
+  2:    MD2_FIXTURES,
+  3:    MD3_FIXTURES,
+  L32:  KO_FIXTURES.filter(f=>f.round==="L32"),
+  L16:  KO_FIXTURES.filter(f=>f.round==="L16"),
+  QF:   KO_FIXTURES.filter(f=>f.round==="QF"),
+  SF:   KO_FIXTURES.filter(f=>f.round==="SF"),
+  F:    KO_FIXTURES.filter(f=>f.round==="3rd"||f.round==="F"),
+};
 
 // MD unlock logic: MD1 always open
 // MD2 predictions open 72hrs before first MD2 kickoff: Thu 18 Jun 16:00 UTC → Mon 15 Jun 16:00 UTC
 // MD3 predictions open 72hrs before first MD3 kickoff: Wed 24 Jun 19:00 UTC → Sun 21 Jun 19:00 UTC
+// KO predictions open 72hrs before first L32 kickoff:  Sun 28 Jun 19:00 UTC → Thu 25 Jun 19:00 UTC
 const MD_OPEN_TIMES = {
-  1: 0,
-  2: new Date("2026-06-15T16:00:00Z").getTime(),
-  3: new Date("2026-06-21T19:00:00Z").getTime(),
+  1:  0,
+  2:  new Date("2026-06-15T16:00:00Z").getTime(),
+  3:  new Date("2026-06-21T19:00:00Z").getTime(),
+  L32: 0, L16: 0, QF: 0, SF: 0, F: 0,
 };
 
 function isMDUnlocked(md) {
@@ -520,7 +575,7 @@ function initData() {
   const predictions = {};
   PLAYERS.forEach(p => {
     predictions[p] = {};
-    [MD1_FIXTURES, MD2_FIXTURES, MD3_FIXTURES].flat().forEach(f => {
+    [MD1_FIXTURES, MD2_FIXTURES, MD3_FIXTURES, KO_FIXTURES].flat().forEach(f => {
       predictions[p][f.id] = {home:"",away:""};
     });
   });
@@ -570,9 +625,16 @@ async function loadData(silent) {
   try {
     const d = await fetchData();
     const base = initData();
-    appData = { predictions:{...base.predictions}, results:d.results||{} };
+    appData = { predictions:{...base.predictions}, results:d.results||{}, koTeams:d.koTeams||{} };
     PLAYERS.forEach(p => {
       appData.predictions[p] = {...base.predictions[p], ...(d.predictions?.[p]||{})};
+    });
+    // Rehydrate KO team names into the fixture array from persisted koTeams
+    KO_FIXTURES.forEach(f=>{
+      if(appData.koTeams[f.id]){
+        if(appData.koTeams[f.id].home) f.home=appData.koTeams[f.id].home;
+        if(appData.koTeams[f.id].away) f.away=appData.koTeams[f.id].away;
+      }
     });
     showSync("","");
     renderAll();
@@ -603,7 +665,7 @@ function renderAll() {
 
 // ── HOME ──────────────────────────────────────────────────────────
 function renderHome() {
-  const allFixtures = [MD1_FIXTURES, MD2_FIXTURES, MD3_FIXTURES].flat();
+  const allFixtures = [MD1_FIXTURES, MD2_FIXTURES, MD3_FIXTURES, KO_FIXTURES].flat();
   const lb = PLAYERS.map(p => {
     let pts=0, played=0, correct=0, direction=0, wrong=0;
     allFixtures.forEach(f => {
@@ -622,6 +684,11 @@ function renderHome() {
   const md1done = MD1_FIXTURES.filter(f=>appData.results[f.id]?.home!=="").length;
   const md2done = MD2_FIXTURES.filter(f=>appData.results[f.id]?.home!=="").length;
   const md3done = MD3_FIXTURES.filter(f=>appData.results[f.id]?.home!=="").length;
+  const l32done = KO_FIXTURES.filter(f=>f.round==="L32"&&appData.results[f.id]?.home!=="").length;
+  const l16done = KO_FIXTURES.filter(f=>f.round==="L16"&&appData.results[f.id]?.home!=="").length;
+  const qfdone  = KO_FIXTURES.filter(f=>f.round==="QF" &&appData.results[f.id]?.home!=="").length;
+  const sfdone  = KO_FIXTURES.filter(f=>f.round==="SF" &&appData.results[f.id]?.home!=="").length;
+  const fdone   = KO_FIXTURES.filter(f=>(f.round==="3rd"||f.round==="F")&&appData.results[f.id]?.home!=="").length;
   const rankEmoji=["🥇","🥈","🥉"];
   const rankColors=["#ffd500","#c0c8d8","#cd7f32"];
 
@@ -629,6 +696,11 @@ function renderHome() {
     ${pill("#00e5ff","MD1: "+md1done+"/"+MD1_FIXTURES.length)}
     ${pill("#ffd500","MD2: "+md2done+"/"+MD2_FIXTURES.length)}
     ${pill("#00e676","MD3: "+md3done+"/"+MD3_FIXTURES.length)}
+    ${pill("#ff8c00","L32: "+l32done+"/16")}
+    ${pill("#ff8c00","L16: "+l16done+"/8")}
+    ${pill("#ff8c00","QF: "+qfdone+"/4")}
+    ${pill("#ff8c00","SF: "+sfdone+"/2")}
+    ${pill("#ff8c00","F: "+fdone+"/2")}
     <button class="refresh-btn" onclick="loadData()">⟳ Refresh</button>
   </div>`;
 
@@ -673,7 +745,7 @@ function renderPredict() {
     let html=`<div style="font-weight:900;font-size:20px;margin-bottom:16px">Who are you? 👇</div>
       <div class="player-grid">`;
     PLAYERS.forEach(p=>{
-      const allF=[MD1_FIXTURES,MD2_FIXTURES,MD3_FIXTURES].flat();
+    const allF=[MD1_FIXTURES,MD2_FIXTURES,MD3_FIXTURES,KO_FIXTURES].flat();
       let done=0;
       allF.forEach(f=>{
         const pred=appData.predictions[p]?.[f.id];
@@ -699,20 +771,22 @@ function renderPredict() {
     <div class="predict-player-name">${predictPlayer}</div>
   </div>
   <div class="md-tabs">
-    ${[1,2,3].map(md=>{
+    ${[1,2,3,"L32","L16","QF","SF","F"].map(md=>{
       const mdUnlocked=isMDUnlocked(md);
+      const label = typeof md==="number" ? "MD"+md : md;
       return `<button class="md-tab${predictMD===md?" active":""}${!mdUnlocked?" locked-tab":""}"
-        onclick="${mdUnlocked?"setPredictMD("+md+")":"void(0)"}">
-        MD${md}${!mdUnlocked?" 🔒":""}
+        onclick="${mdUnlocked?"setPredictMD("+(typeof md==="string"?"'"+md+"'":md)+")":"void(0)"}">
+        ${label}${!mdUnlocked?" 🔒":""}
       </button>`;
     }).join("")}
   </div>`;
 
   if (!unlocked) {
     const opensIn = mdOpensIn(predictMD);
+    const label = typeof predictMD==="string" ? predictMD : "MD"+predictMD;
     html+=`<div class="md-locked-banner">
       <div class="lock-icon">🔒</div>
-      <div class="lock-title">MD${predictMD} Not Open Yet</div>
+      <div class="lock-title">${label} Not Open Yet</div>
       <div class="lock-sub">${opensIn || "Opening soon"}</div>
     </div>`;
     el.innerHTML=html; return;
@@ -724,30 +798,36 @@ function renderPredict() {
   Object.entries(byDate).forEach(([date,fixs])=>{
     html+=`<div class="date-label">${date}</div>`;
     fixs.forEach(f=>{
-      const locked=isLocked(f);
+      const isKO = !!f.round;
+      const teamsSet = isKO ? (f.home !== "" && f.away !== "") : true;
+      const locked = isLocked(f) || !teamsSet;
       const pred=predictLocal[f.id]||{home:"",away:""};
       const result=appData.results[f.id];
-      const pts=result&&result.home!==""?calcPts(pred,result):null;
-      const bc=pts===10?"#ffd500":pts===2?"#00e676":pts===-2?"#ff3d5a":"var(--border)";
+      const pts=(result&&result.home!==""&&teamsSet)?calcPts(pred,result):null;
+      const bc=pts===10?"#ffd500":pts===2?"#00e676":pts===-2?"#ff3d5a":(!teamsSet?"var(--border)":"var(--border)");
       const ptsColor=pts===10?"#ffd500":pts>0?"#00e676":"#ff3d5a";
-      html+=`<div class="fixture-card" style="border-color:${bc};box-shadow:${pts!==null?"0 0 16px "+bc+"18":"none"}">
+      const roundPill = isKO ? pill("#ff8c00", f.round) : pill("#ffd500","GRP "+f.group);
+      const homeLabel = teamsSet ? f.home : "TBC";
+      const awayLabel = teamsSet ? f.away : "TBC";
+      html+=`<div class="fixture-card" style="border-color:${bc};${!teamsSet?"opacity:0.55;":""}box-shadow:${pts!==null?"0 0 16px "+bc+"18":"none"}">
         <div class="fixture-head">
           <div class="fixture-head-left">
-            ${pill("#ffd500","GRP "+f.group)}
-            <span class="fixture-name">${f.home} vs ${f.away}</span>
+            ${roundPill}
+            <span class="fixture-name">${homeLabel} vs ${awayLabel}</span>
           </div>
           <div class="fixture-head-right">
-            <span style="font-size:10px;color:var(--muted)">${getBST(f)} · ${f.venue}</span>
-            ${locked&&(!result?.home)?pill("#ff3d5a","🔒 LOCKED"):""}
-            ${locked&&result?.home?`<span style="font-size:11px;color:var(--muted)">FT: <b style="color:var(--text)">${result.home}–${result.away}</b></span>`:""}
-            ${!locked?pill("#00e676","OPEN"):""}
+            <span style="font-size:10px;color:var(--muted)">${getBST(f)} · ${f.venue||f.venue}</span>
+            ${!teamsSet?pill("#5a6a88","⏳ TEAMS TBC"):""}
+            ${teamsSet&&isLocked(f)&&(!result?.home)?pill("#ff3d5a","🔒 LOCKED"):""}
+            ${teamsSet&&isLocked(f)&&result?.home?`<span style="font-size:11px;color:var(--muted)">FT: <b style="color:var(--text)">${result.home}–${result.away}</b></span>`:""}
+            ${teamsSet&&!isLocked(f)?pill("#00e676","OPEN"):""}
             ${pts!==null?`<span class="fixture-pts" style="color:${ptsColor}">${pts>0?"+"+pts:pts}pts</span>`:""}
           </div>
         </div>
         <div class="fixture-body">
           <div class="fixture-team">
-            ${flagImg(f.home,"flag-img")}
-            <div class="fixture-team-name">${f.home}</div>
+            ${teamsSet?flagImg(f.home,"flag-img"):`<span style="font-size:22px;display:block;text-align:center">🏴</span>`}
+            <div class="fixture-team-name" style="${!teamsSet?"color:var(--muted)":""}">${homeLabel}</div>
           </div>
           <div class="score-inputs">
             <input class="score-input${locked?" locked":""}" type="number" min="0" max="20"
@@ -759,8 +839,8 @@ function renderPredict() {
               oninput="updatePred(${f.id},'away',this.value)">
           </div>
           <div class="fixture-team">
-            ${flagImg(f.away,"flag-img")}
-            <div class="fixture-team-name">${f.away}</div>
+            ${teamsSet?flagImg(f.away,"flag-img"):`<span style="font-size:22px;display:block;text-align:center">🏴</span>`}
+            <div class="fixture-team-name" style="${!teamsSet?"color:var(--muted)":""}">${awayLabel}</div>
           </div>
         </div>
       </div>`;
@@ -799,44 +879,52 @@ async function savePredictions() {
 function renderResults() {
   const el=document.getElementById("view-results");
   const fixtures=ALL_FIXTURES[resultsMD];
+  const label = typeof resultsMD==="string" ? resultsMD : "MD"+resultsMD;
   let html=`<div style="font-weight:900;font-size:20px;margin-bottom:4px">All Predictions 📊</div>
   <div class="md-tabs" style="padding:10px 0 14px">
-    ${[1,2,3].map(md=>{
+    ${[1,2,3,"L32","L16","QF","SF","F"].map(md=>{
       const mdUnlocked=isMDUnlocked(md);
+      const lbl = typeof md==="number" ? "MD"+md : md;
       return `<button class="md-tab${resultsMD===md?" active":""}${!mdUnlocked?" locked-tab":""}"
-        onclick="${mdUnlocked?"setResultsMD("+md+")":"void(0)"}">MD${md}${!mdUnlocked?" 🔒":""}</button>`;
+        onclick="${mdUnlocked?"setResultsMD("+(typeof md==="string"?"'"+md+"'":md)+")":"void(0)"}">
+        ${lbl}${!mdUnlocked?" 🔒":""}</button>`;
     }).join("")}
   </div>`;
 
   if(!isMDUnlocked(resultsMD)){
     const opensIn = mdOpensIn(resultsMD);
     html+=`<div class="md-locked-banner"><div class="lock-icon">🔒</div>
-      <div class="lock-title">MD${resultsMD} Not Open Yet</div>
+      <div class="lock-title">${label} Not Open Yet</div>
       <div class="lock-sub">${opensIn || "Opening soon"}</div>
     </div>`;
     el.innerHTML=html; return;
   }
 
   fixtures.forEach(f=>{
+    const isKO = !!f.round;
+    const teamsSet = isKO ? (f.home !== "" && f.away !== "") : true;
     const result=appData.results[f.id];
     const hasResult=result&&result.home!=="";
-    html+=`<div class="results-fixture">
+    const homeLabel = teamsSet ? f.home : "TBC";
+    const awayLabel = teamsSet ? f.away : "TBC";
+    const roundPill = isKO ? pill("#ff8c00", f.round) : pill("#ffd500","GRP "+f.group);
+    html+=`<div class="results-fixture"${!teamsSet?' style="opacity:0.55"':""}>
       <div class="results-head">
         <div class="results-head-name">
-          ${flagImg(f.home,"flag-img-sm")}${f.home}
+          ${teamsSet?flagImg(f.home,"flag-img-sm"):""}${homeLabel}
           <span style="color:var(--muted);margin:0 4px">vs</span>
-          ${flagImg(f.away,"flag-img-sm")}${f.away}
+          ${teamsSet?flagImg(f.away,"flag-img-sm"):""}${awayLabel}
         </div>
         <div style="display:flex;gap:8px;align-items:center">
-          ${pill("#ffd500","GRP "+f.group)}
-          ${hasResult?pill("#00e676","FT: "+result.home+"–"+result.away):pill("#5a6a88","PENDING")}
+          ${roundPill}
+          ${!teamsSet?pill("#5a6a88","TEAMS TBC"):hasResult?pill("#00e676","FT: "+result.home+"–"+result.away):pill("#5a6a88","PENDING")}
         </div>
       </div>
       <div class="results-preds">`;
     PLAYERS.forEach(p=>{
       const pred=appData.predictions[p]?.[f.id];
       const hasPred=pred&&pred.home!==""&&pred.away!=="";
-      const pts=hasResult&&hasPred?calcPts(pred,result):null;
+      const pts=(hasResult&&hasPred&&teamsSet)?calcPts(pred,result):null;
       const bg=pts===10?"#2a1e00":pts===2?"#0d2418":pts===-2?"#2a0d14":"var(--surface)";
       const bc=pts===10?"#ffd50066":pts===2?"#00e67666":pts===-2?"#ff3d5a66":"var(--border)";
       const ptsColor=pts===10?"#ffd500":pts>0?"#00e676":"#ff3d5a";
@@ -869,32 +957,66 @@ function renderAdmin() {
 
   const fixtures=ALL_FIXTURES[adminMD];
   const doneCount=fixtures.filter(f=>appData.results[f.id]?.home!=="").length;
+  const isKOTab = typeof adminMD === "string";
 
   let html=`<div class="admin-header">
     <div class="admin-title">⚙️ Enter Results</div>
     <button class="lock-btn" onclick="lockAdmin()">Lock Admin</button>
   </div>
   <div class="md-tabs" style="padding:0 0 14px">
-    ${[1,2,3].map(md=>`<button class="md-tab${adminMD===md?" active":""}" onclick="setAdminMD(${md})">MD${md}</button>`).join("")}
+    ${[1,2,3,"L32","L16","QF","SF","F"].map(md=>{
+      const lbl = typeof md==="number" ? "MD"+md : md;
+      return `<button class="md-tab${adminMD===md?" active":""}" onclick="setAdminMD(${typeof md==="string"?"'"+md+"'":md})">${lbl}</button>`;
+    }).join("")}
   </div>
-  <div class="admin-sub">${doneCount}/${fixtures.length} results entered for MD${adminMD}</div>`;
+  <div class="admin-sub">${doneCount}/${fixtures.length} results entered${isKOTab?" · Set team names below as teams qualify":""}</div>`;
 
   fixtures.forEach(f=>{
     const r=adminLocalRes[f.id]||{home:"",away:""};
     const isDone=appData.results[f.id]?.home!==""&&appData.results[f.id]?.home!==undefined;
     const kicked=isLocked(f);
+    const isKO = !!f.round;
+    const teamsSet = isKO ? (f.home !== "" && f.away !== "") : true;
+    // For KO fixtures, get the live home/away from appData (admin may have saved team names)
+    const liveHome = isKO ? (appData.results[f.id]?.teamHome || f.home) : f.home;
+    const liveAway = isKO ? (appData.results[f.id]?.teamAway || f.away) : f.away;
+    const displayHome = liveHome || f.home || "TBC";
+    const displayAway = liveAway || f.away || "TBC";
+
     html+=`<div class="admin-fixture${isDone?" done":""}">
       <div class="admin-fixture-head">
-        <div class="admin-fixture-name">
-          ${flagImg(f.home,"flag-img-sm")}${f.home} vs ${flagImg(f.away,"flag-img-sm")}${f.away}
+        <div class="admin-fixture-name" style="flex-wrap:wrap;gap:4px">
+          ${isKO?`<span style="color:var(--accent);font-size:11px;font-weight:800;margin-right:4px">${f.round}</span>`:""}
+          ${teamsSet?`${flagImg(f.home,"flag-img-sm")}${f.home} vs ${flagImg(f.away,"flag-img-sm")}${f.away}`:`<span style="color:var(--muted)">Teams TBC · ID ${f.id}</span>`}
         </div>
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-          <span style="font-size:11px;color:var(--muted)">${f.date} · ${getBST(f)}</span>
+          <span style="font-size:11px;color:var(--muted)">${f.date} · ${getBST(f)} · ${f.venue}</span>
           ${kicked?pill("#ff3d5a","KO PASSED"):pill("#00e676","PRE-KO")}
           ${isDone?pill("#00e676","✅ DONE"):""}
         </div>
-      </div>
-      <div class="admin-fixture-body">
+      </div>`;
+
+    // KO fixtures: show team name inputs BEFORE score inputs
+    if(isKO){
+      html+=`<div style="padding:10px 16px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;color:var(--muted);width:100%;margin-bottom:2px">Team names (enter as they qualify):</span>
+        <input type="text" placeholder="Home team" value="${f.home}"
+          style="flex:1;min-width:100px;padding:8px 10px;background:var(--hover);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;outline:none"
+          oninput="updateKOTeam(${f.id},'home',this.value)">
+        <span style="color:var(--muted);font-weight:900">vs</span>
+        <input type="text" placeholder="Away team" value="${f.away}"
+          style="flex:1;min-width:100px;padding:8px 10px;background:var(--hover);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;outline:none"
+          oninput="updateKOTeam(${f.id},'away',this.value)">
+        <button onclick="saveKOTeams(${f.id})"
+          style="padding:8px 14px;border-radius:8px;background:var(--hover);border:1px solid var(--border);color:var(--accent);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer">
+          Save Teams</button>
+        <button onclick="resetKOTeams(${f.id})"
+          style="padding:8px 14px;border-radius:8px;background:none;border:1px solid #ff3d5a44;color:var(--red);font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;cursor:pointer">
+          Reset</button>
+      </div>`;
+    }
+
+    html+=`<div class="admin-fixture-body">
         <input class="score-input" type="number" min="0" max="20" value="${r.home}"
           oninput="updateAdminRes(${f.id},'home',this.value)" style="background:var(--hover);border-color:#00e5ff88">
         <span class="score-sep">–</span>
@@ -913,7 +1035,7 @@ function tryUnlock(){
   const pin=document.getElementById("pin-input").value;
   if(pin===ADMIN_PIN){
     adminUnlocked=true;
-    [MD1_FIXTURES,MD2_FIXTURES,MD3_FIXTURES].flat().forEach(f=>{
+    [MD1_FIXTURES,MD2_FIXTURES,MD3_FIXTURES,KO_FIXTURES].flat().forEach(f=>{
       adminLocalRes[f.id]=appData.results[f.id]||{home:"",away:""};
     });
     renderAdmin();
@@ -926,6 +1048,46 @@ function tryUnlock(){
 
 function lockAdmin(){adminUnlocked=false;renderAdmin();}
 function setAdminMD(md){adminMD=md;renderAdmin();}
+
+// KO team name local edits (before save)
+const adminKOTeams = {};
+function updateKOTeam(fid, side, val) {
+  if(!adminKOTeams[fid]) adminKOTeams[fid]={home:"",away:""};
+  adminKOTeams[fid][side]=val;
+}
+
+async function resetKOTeams(fid) {
+  const f = KO_FIXTURES.find(x=>x.id===fid);
+  if(!f) return;
+  f.home=""; f.away="";
+  if(adminKOTeams[fid]) adminKOTeams[fid]={home:"",away:""};
+  const nd=JSON.parse(JSON.stringify(appData));
+  if(!nd.koTeams) nd.koTeams={};
+  nd.koTeams[fid]={home:"", away:""};
+  await saveData(nd);
+  renderAdmin();
+}
+
+async function saveKOTeams(fid) {
+  const teams = adminKOTeams[fid];
+  if(!teams || (teams.home===""&&teams.away==="")) return;
+  // Find and update the fixture in KO_FIXTURES array
+  const f = KO_FIXTURES.find(x=>x.id===fid);
+  if(!f) return;
+  if(teams.home!=="") f.home=teams.home.trim();
+  if(teams.away!=="") f.away=teams.away.trim();
+  // Persist team names in appData.koTeams so they survive page reloads
+  const nd=JSON.parse(JSON.stringify(appData));
+  if(!nd.koTeams) nd.koTeams={};
+  nd.koTeams[fid]={home:f.home, away:f.away};
+  // Ensure prediction slots exist for all players for this fixture
+  PLAYERS.forEach(p=>{
+    if(!nd.predictions[p]) nd.predictions[p]={};
+    if(!nd.predictions[p][fid]) nd.predictions[p][fid]={home:"",away:""};
+  });
+  await saveData(nd);
+  renderAdmin();
+}
 
 function updateAdminRes(fid,side,val){
   if(!adminLocalRes[fid]) adminLocalRes[fid]={home:"",away:""};
